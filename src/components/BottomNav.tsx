@@ -1,5 +1,5 @@
 import { useRef, useLayoutEffect } from 'react'
-import { Link, useMatchRoute } from '@tanstack/react-router'
+import { Link, useMatchRoute, useLocation } from '@tanstack/react-router'
 
 const navItems = [
   { to: '/' as const, label: 'home' },
@@ -9,7 +9,8 @@ const navItems = [
 
 export default function BottomNav() {
   const matchRoute = useMatchRoute()
-  const isIndex = !!matchRoute({ to: '/' })
+  const pathname = useLocation({ select: (l) => l.pathname })
+  const isIndex = pathname === '/'
   const itemRefs = useRef<Map<string, HTMLAnchorElement>>(new Map())
   const positionsRef = useRef<Map<string, DOMRect>>(new Map())
   const prevIsIndex = useRef(isIndex)
@@ -53,7 +54,7 @@ export default function BottomNav() {
       className={`flex ${isIndex ? 'flex-col' : 'flex-col sm:flex-row'} justify-center items-center`}
     >
       {navItems.map((item) => {
-        const isActive = !!matchRoute({ to: item.to })
+        const isActive = pathname === item.to
         return (
           <Link
             key={item.to}

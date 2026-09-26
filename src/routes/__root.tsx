@@ -4,9 +4,21 @@ import {
   Outlet,
   useMatchRoute,
 } from '@tanstack/react-router'
+import BottomNav from '#/components/BottomNav'
+
+function NotFound() {
+  return (
+    <div className="relative flex-1 flex flex-col items-center justify-center gap-8">
+      <h1 className="text-white text-6xl font-black neon-text">404</h1>
+      <p className="text-white/70 text-lg">Page not found.</p>
+      <BottomNav />
+    </div>
+  )
+}
 
 export const Route = createRootRoute({
   component: RootLayout,
+  notFoundComponent: NotFound,
 })
 
 const routeCamera: Record<string, { scale: number; origin: string }> = {
