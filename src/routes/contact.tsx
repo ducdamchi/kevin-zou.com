@@ -60,7 +60,7 @@ function Contact() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-4 gap-15">
+    <div className="relative flex-1 flex flex-col items-center justify-center px-4 gap-15">
       <Card className="w-full max-w-md bg-white/10 backdrop-blur-md border-white/20">
         <CardHeader>
           <CardTitle className="text-white text-2xl font-black">

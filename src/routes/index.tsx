@@ -45,7 +45,7 @@ function App() {
   const visible = loaded && !leaving
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center gap-15">
+    <div className="relative flex-1 flex flex-col items-center justify-center gap-15">
       <div className="relative w-full max-w-[250px] sm:max-w-[300px]">
         {!loaded && (
           <div className="aspect-square w-full animate-pulse bg-white/10 border-10 border-[#ef053b]/30" />

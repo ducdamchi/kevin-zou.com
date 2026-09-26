@@ -8,7 +8,7 @@ export const Route = createFileRoute('/writing')({
 
 function Writing() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-4 gap-15">
+    <div className="relative flex-1 flex flex-col items-center justify-center px-4 gap-15">
       <div className="space-y-8">
         {writings.map((w) => (
           <a

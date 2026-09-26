@@ -24,23 +24,25 @@ function RootLayout() {
   const { scale, origin } = routeCamera[route]
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out overflow-hidden"
         style={{
           backgroundImage: "url('/bg.jpeg')",
           transform: `scale(${scale})`,
           transformOrigin: origin,
         }}
       />
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen flex flex-col">
         <Link
           to="/"
-          className="absolute top-0 left-0 z-10 text-white text-4xl font-black p-8 uppercase no-underline neon-text"
+          className="z-10 text-white text-3xl sm:text-4xl font-black p-8 uppercase no-underline neon-text"
         >
           Kevin Zou
         </Link>
-        <Outlet />
+        <div className="flex-1 flex flex-col pb-12">
+          <Outlet />
+        </div>
       </div>
     </div>
   )
