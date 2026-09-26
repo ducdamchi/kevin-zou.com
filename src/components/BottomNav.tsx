@@ -52,22 +52,25 @@ export default function BottomNav() {
     <nav
       className={`flex ${isIndex ? 'flex-col' : 'flex-col sm:flex-row'} justify-center items-center`}
     >
-      {navItems.map((item) => (
-        <Link
-          key={item.to}
-          to={item.to}
-          ref={(el: HTMLAnchorElement | null) => {
-            if (el) {
-              itemRefs.current.set(item.to, el)
-            } else {
-              itemRefs.current.delete(item.to)
-            }
-          }}
-          className="text-white text-lg border-white p-2 sm:p-3 font-black neon-text-hover"
-        >
-          {item.label}
-        </Link>
-      ))}
+      {navItems.map((item) => {
+        const isActive = !!matchRoute({ to: item.to })
+        return (
+          <Link
+            key={item.to}
+            to={item.to}
+            ref={(el: HTMLAnchorElement | null) => {
+              if (el) {
+                itemRefs.current.set(item.to, el)
+              } else {
+                itemRefs.current.delete(item.to)
+              }
+            }}
+            className={`text-white text-lg border-white p-2 sm:p-3 font-black neon-text-hover ${isActive ? 'neon-text' : ''}`}
+          >
+            {item.label}
+          </Link>
+        )
+      })}
     </nav>
   )
 }
