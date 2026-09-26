@@ -12,14 +12,20 @@ export default function BottomNav() {
   const isIndex = !!matchRoute({ to: '/' })
   const itemRefs = useRef<Map<string, HTMLAnchorElement>>(new Map())
   const positionsRef = useRef<Map<string, DOMRect>>(new Map())
+  const prevIsIndex = useRef(isIndex)
 
   // Capture positions before render
   const prevPositions = new Map(positionsRef.current)
+  const layoutChanged = prevIsIndex.current !== isIndex
 
   useLayoutEffect(() => {
+    prevIsIndex.current = isIndex
+
     itemRefs.current.forEach((el, key) => {
       const newRect = el.getBoundingClientRect()
       positionsRef.current.set(key, newRect)
+
+      if (!layoutChanged) return
 
       const oldRect = prevPositions.get(key)
       if (!oldRect) return
@@ -44,7 +50,7 @@ export default function BottomNav() {
 
   return (
     <nav
-      className={`absolute top-3/4 left-1/2 -translate-x-1/2 flex ${isIndex ? 'flex-col' : 'flex-row'} justify-center items-center border-white p-5`}
+      className={`absolute top-[80%] sm:top-3/4 left-1/2 -translate-x-1/2 flex ${isIndex ? 'flex-col' : 'flex-col sm:flex-row'} justify-center items-center border-white p-0`}
     >
       {navItems.map((item) => (
         <Link

@@ -46,7 +46,7 @@ function App() {
       <img
         src="/portrait.jpg"
         alt="Kevin Zou"
-        className={`w-full max-w-[300px] drop-shadow-xl transition-opacity duration-500 ${leaving ? 'opacity-0' : 'opacity-100'} border-10 border-[#ef053b] neon-border`}
+        className={`w-full max-w-[300px] drop-shadow-xl transition-opacity duration-500 ${leaving ? 'opacity-0' : 'opacity-100'} border-10 border-[#ef053b] neon-border mb-15`}
       />
       <BottomNav />
     </div>

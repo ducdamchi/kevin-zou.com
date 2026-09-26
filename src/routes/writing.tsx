@@ -8,8 +8,8 @@ export const Route = createFileRoute('/writing')({
 
 function Writing() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-4">
-      <div className="space-y-8">
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-4 ">
+      <div className="space-y-8 mb-15">
         {writings.map((w) => (
           <a
             key={w.title}
