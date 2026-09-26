@@ -31,6 +31,7 @@ function App() {
   }, [selectedTags])
 
   const [leaving, setLeaving] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -41,14 +42,24 @@ function App() {
     })
   }, [router])
 
+  const visible = loaded && !leaving
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center">
-      <img
-        src="/portrait.jpg"
-        alt="Kevin Zou"
-        className={`w-full max-w-[300px] drop-shadow-xl transition-opacity duration-500 ${leaving ? 'opacity-0' : 'opacity-100'} border-10 border-[#ef053b] neon-border mb-15`}
-      />
-      <BottomNav />
+    <div className="relative min-h-screen flex flex-col items-center justify-center gap-15">
+      <div className="relative w-full max-w-[250px] sm:max-w-[300px]">
+        {!loaded && (
+          <div className="aspect-square w-full animate-pulse bg-white/10 border-10 border-[#ef053b]/30" />
+        )}
+        <img
+          src="/portrait.jpg"
+          alt="Kevin Zou"
+          onLoad={() => setLoaded(true)}
+          className={`w-full drop-shadow-xl transition-opacity duration-700 ${visible ? 'opacity-100' : 'opacity-0'} ${loaded ? '' : 'absolute inset-0'} border-10 border-[#ef053b] neon-border`}
+        />
+      </div>
+      <div className="">
+        <BottomNav />
+      </div>
     </div>
   )
 }

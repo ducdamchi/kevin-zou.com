@@ -50,7 +50,7 @@ export default function BottomNav() {
 
   return (
     <nav
-      className={`absolute top-[80%] sm:top-3/4 left-1/2 -translate-x-1/2 flex ${isIndex ? 'flex-col' : 'flex-col sm:flex-row'} justify-center items-center border-white p-0`}
+      className={`flex ${isIndex ? 'flex-col' : 'flex-col sm:flex-row'} justify-center items-center`}
     >
       {navItems.map((item) => (
         <Link
@@ -63,7 +63,7 @@ export default function BottomNav() {
               itemRefs.current.delete(item.to)
             }
           }}
-          className="text-white text-lg border-white p-3 font-black neon-text-hover"
+          className="text-white text-lg border-white p-2 sm:p-3 font-black neon-text-hover"
         >
           {item.label}
         </Link>
