@@ -1,2 +1,3 @@
 # kevin-zou.com
-kevin's writer website
+
+Kevin Zou's portfolio website.
